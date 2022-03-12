@@ -28,9 +28,7 @@
 
         string[] args = Arguments.Split(' ');
 
-		// For some reason SharpZipLib cannot get this constant as it defaults to 1 in my tests
-        // So therefore it needs to be hardcoded to 850 (https://en.wikipedia.org/wiki/Code_page_850)
-		// We need to invoke FixCodePage because we need it to load the assembly the correct way
+
         typeof(Task).GetMethod("FixCodePage", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
 
         typeof(Sharphound).GetMethod("Main", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { args });
